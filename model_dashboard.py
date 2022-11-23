@@ -19,11 +19,11 @@ def build_model(taille, nb_rooms, garden):
 
 
 def main():
-    st.title('Prédiction de prix de maison')
-    taille = st.number_input("Taille maison")
-    nb_rooms = st.number_input("Nombre de chambre")
-    garden = st.number_input("Y a un jardin")
-    st.write(f"le prix de la maison est : {build_model(taille, nb_rooms, garden)}")
+	st.title("Prediction de prix de maison")
+	taille = st.number_input("Taille maison")
+	nb_rooms = st.number_input("Nombre de chambre")
+	garden = st.number_input("Y a un jardin")
+	st.write("le prix de la maison est : {}".format(build_model(taille, nb_rooms, garden)))	
 
 if __name__ == "__main__":
     main()
