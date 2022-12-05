@@ -6,8 +6,8 @@ def load_model():
     return joblib.load('regression.joblib')
 
 def build_model(taille, nb_rooms, garden):
-    if type(taille) != float:
-        raise Exception("Size must be a float")
+    if type(taille) != float and type(taille) != int:
+        raise Exception("Size must be a numeric value")
     if taille < 0:
         raise Exception("Size must be positive")
 
@@ -16,8 +16,8 @@ def build_model(taille, nb_rooms, garden):
     if nb_rooms < 0:
         raise Exception("Nb_rooms must be positive")
 
-    if type(garden) != float:
-        raise Exception("Garden must be a float")
+    if type(garden) != float and type(garden) != int:
+        raise Exception("Garden must be a numeric value")
     if garden < 0:
         raise Exception("Garden must be positif or null")
 
