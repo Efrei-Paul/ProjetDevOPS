@@ -30,7 +30,7 @@ def build_model(taille, nb_rooms, garden):
 
     if taille > 0 and nb_rooms > 0:
         X = [[taille, nb_rooms, garden]]
-        return model.predict(X)
+        return model.predict(X)[0]
 
 
 
