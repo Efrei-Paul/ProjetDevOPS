@@ -1,10 +1,23 @@
 
-name: GitHub Actions Demo
+name: Pytest
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  tests:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      # Seting up Python
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      # Install podules
+      - name: Install modules
+        run: python3 -m pip install -r requirements.txt
+
+      # Run Pytest
+      - name: Run test
+        run: pytest .
