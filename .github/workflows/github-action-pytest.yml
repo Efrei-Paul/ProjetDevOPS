@@ -19,5 +19,5 @@ jobs:
         run: python3 -m pip install -r requirements.txt
 
       # Run Pytest
-      - name: Run test suite
-        run: pipenv run test -v
+      - name: Run test
+        run: pytest .
