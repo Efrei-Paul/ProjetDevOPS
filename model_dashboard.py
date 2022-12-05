@@ -14,7 +14,7 @@ def build_model(taille, nb_rooms, garden):
         return "mettre nombre de chambre correct"
 
     if taille > 0 and nb_rooms > 0:
-        X = [[taille, nb_rooms, -3]]
+        X = [[taille, nb_rooms, garden]]
         return model.predict(X)
 
 
