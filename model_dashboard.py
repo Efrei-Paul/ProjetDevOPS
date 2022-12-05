@@ -8,17 +8,17 @@ def load_model():
 def build_model(taille, nb_rooms, garden):
     if type(taille) != float:
         raise Exception("Size must be a float")
-    if taille > 0:
+    if taille < 0:
         raise Exception("Size must be positive")
 
-    if type(nb_rooms) == int or (type(nb_rooms) == float and nb_rooms == int(nb_rooms)):
+    if type(nb_rooms) != int or (nb_rooms != int(nb_rooms)):
         raise Exception("Nb_rooms must be an integer")
-    if nb_rooms > 0:
+    if nb_rooms < 0:
         raise Exception("Nb_rooms must be positive")
 
     if type(garden) != float:
         raise Exception("Garden must be a float")
-    if garden >= 0:
+    if garden < 0:
         raise Exception("Garden must be positif or null")
 
     model = load_model()
