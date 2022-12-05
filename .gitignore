@@ -1,0 +1,4 @@
+__pycache__/*
+*.pyc
+.pytes_cache/*
+.model_dashboard.py.swp
