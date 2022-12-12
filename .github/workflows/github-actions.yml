@@ -62,8 +62,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          spec: cypress/e2e/dashboard.spec.cy.js
-          browser: firefox
+          env: host=api.dev.local,port=4581
           
       - name: upload cypress screenshots and videos
         uses: actions/upload-artifact@v2
