@@ -1,20 +1,19 @@
 describe('Dashboard', () => {
-  it('Checks if everything is in the page and work correctly', () => {
+  it('Checks if everything exist and work correctly', () => {
     cy.visit('http://localhost:8501')
 
     // Check that the title and the input exist
     cy.get('[id="prediction-de-prix-de-maison"]').should('exist')
     cy.get('[data-baseweb="input"]').should('exist')
 
-    // Check that clicking on the button increment the value in the input
-    // Check the value
+    // Check the value of the input and click on the plus button
     cy.get('[data-baseweb="input"]')
-      .invoke('text')
-      .then(Number)
+      .invoke('val')
       .then((n) => {
-    cy.get('[data-baseweb="input"]').get('button').click({ multiple: true })
-    // Check the incremented value
-    cy.contains('[data-baseweb="input"]', String(n + 1))
+    cy.get('.step-up').click({multiple: true })
+
+    // Check that the incremented value is correct
+    cy.get('input').should('have.value', String(n + 0.01))
   })
 
   })
