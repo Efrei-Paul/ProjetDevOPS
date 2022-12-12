@@ -10,4 +10,5 @@ RUN apt-get update && apt-get install -y \
     python3-pip
 RUN pip install --requirement requirements.txt
 RUN python3 build_model.py
+EXPOSE 8501
 ENTRYPOINT ["streamlit", "run", "model_dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
