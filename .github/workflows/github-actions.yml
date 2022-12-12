@@ -44,21 +44,17 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-
-      - name: install packets
-        run: sudo apt-get install python3 libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb node.js npm
       
+      - name: install python3
+        run: sudo apt install python3
+        
       - name: install streamlit
         run: python3 -m pip install streamlit
-        
-      - name: run cypress
-        run: nohup streamlit run model_dashboard.py --browser.serverAddress http://localhost &
-        
-      - name: install cypress
-        run: npm install cypress --save-dev
 
-      - name: test cypress
-        run: npx cypress run --spec "cypress/e2e/dashboard.spec.cy.js"
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          start: streamlit run model_dashboard.py
 
   docker-push:
     runs-on: ubuntu-latest
