@@ -51,16 +51,16 @@ jobs:
       - name: install streamlit
         run: python3 -m pip install streamlit
 
+      - name: install cypress
+        run : npm install cypress --save-dev
+
       - name: run streamlit
         run: streamlit run model_dashboard.py --server.port 8501 --server.address 0.0.0.0 &
         
-      - name: Sleep for 10s
+      - name: Sleep for 20s
         uses: juliangruber/sleep-action@v1
         with:
           time: 20s
-        
-      - name: install cypress
-        run : npm install cypress --save-dev
         
       - name: start cypress
         run : npx cypress run --spec "cypress/e2e/dashboard.spec.cy.js"
