@@ -57,10 +57,10 @@ jobs:
       - name: run streamlit
         run: streamlit run model_dashboard.py --server.port 8501 --server.address 0.0.0.0 &
         
-      - name: Sleep for 20s
+      - name: sleep for 5s
         uses: juliangruber/sleep-action@v1
         with:
-          time: 20s
+          time: 5s
         
       - name: start cypress
         run : npx cypress run --browser firefox --headed --spec "cypress/e2e/dashboard.spec.cy.js"
