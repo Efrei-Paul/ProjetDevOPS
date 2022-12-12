@@ -62,7 +62,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          spec: cypress/integration/spec1.js
+          spec: cypress/e2e/dashboard.spec.cy.js
           
       - name: upload cypress screenshots and videos
         uses: actions/upload-artifact@v2
