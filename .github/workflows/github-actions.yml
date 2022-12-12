@@ -65,6 +65,14 @@ jobs:
       - name: start cypress
         run : npx cypress run --browser firefox --headed --spec "cypress/e2e/dashboard.spec.cy.js"
           
+      - name: upload cypress screenshots and videos
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-artifacts
+          path: |-
+            cypress/screenshots
+            cypress/videos
+        if: ${{ failure() }}
 
   docker-push:
     runs-on: ubuntu-latest
