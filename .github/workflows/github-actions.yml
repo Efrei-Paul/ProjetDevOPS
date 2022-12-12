@@ -22,22 +22,54 @@ jobs:
       - name: Run build model
         run: python3 build_model.py
 
-  tests:
+  pytest:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-
       # Seting up Python
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: "3.x"
-
       # Install podules
       - name: Install modules
         run: python3 -m pip install -r requirements.txt
-
       # Run Pytest
       - name: Run test
         run: pytest .
+
+  cypress-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: install packets
+        run: apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb node.js npm
+
+      - name: install cypress
+        run: npm install cypress --save-dev
+
+      - name: test cypress
+        run: npx cypress run --spec "cypress/e2e/dashboard.spec.cy.js"
+
+  docker-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: efreipaul/projetdevops
+
+  
