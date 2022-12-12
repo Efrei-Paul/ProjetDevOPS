@@ -52,7 +52,7 @@ jobs:
         run: python3 -m pip install streamlit
         
       - name: npm i
-        run: npm i
+        run: npm i cypress
       
       - name: npm update
         run: npm update
