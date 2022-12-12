@@ -42,42 +42,22 @@ jobs:
   cypress-test:
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkup
-        uses: actions/checkout@v2
-      
-      - name: install packages
-        run: sudo apt-get install python3 node.js npm
+        - name: Checkout
+          uses: actions/checkout@v2
 
-      - name: install streamlit
-        run: python3 -m pip install streamlit
-        
-      - name: npm i
-        run: npm i cypress
-      
-      - name: npm update
-        run: npm update
+        - name: Setup Python 3.11
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.11'
+            cache: pip
 
-      - name: run streamlit
-        run: streamlit run model_dashboard.py --server.port 8501 --server.address 0.0.0.0 &
-        
-      - name: sleep for 5s
-        uses: juliangruber/sleep-action@v1
-        with:
-          time: 5s
-        
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
-        with:
-          env: host=api.dev.local,port=4581
-          
-      - name: upload cypress screenshots and videos
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-artifacts
-          path: |-
-            cypress/screenshots
-            cypress/videos
-        if: ${{ failure() }}
+        - name: Install dependencies
+          run: pip install -r requirements.txt
+
+        - name: Cypress run
+          uses: cypress-io/github-action@v4
+          with:
+            start: streamlit run model_dashboard.py --server.headless=true
 
   docker-push:
     runs-on: ubuntu-latest
