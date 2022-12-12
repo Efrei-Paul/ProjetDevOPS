@@ -54,7 +54,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          start: streamlit run model_dashboard.py
+          spec: cypress/e2e/dashboard.spec.cy.js
+          
 
   docker-push:
     runs-on: ubuntu-latest
