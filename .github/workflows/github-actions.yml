@@ -58,6 +58,16 @@ jobs:
           uses: cypress-io/github-action@v4
           with:
             start: streamlit run model_dashboard.py --server.headless=true
+
+        - name: upload cypress screenshots and videos
+          uses: actions/upload-artifact@v2
+          with:
+            name: cypress-artifacts
+            path: |-
+              cypress/screenshots
+              cypress/videos
+          if: ${{ failure() }}
+
   docker-push:
     runs-on: ubuntu-latest
     steps:
