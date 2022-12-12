@@ -1,0 +1,23 @@
+
+name: Pytest
+on: [push]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      # Seting up Python
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      # Install podules
+      - name: Install modules
+        run: python3 -m pip install -r requirements.txt
+
+      # Run Pytest
+      - name: Run test
+        run: pytest .

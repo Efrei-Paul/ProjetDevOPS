@@ -11,8 +11,5 @@ def build_model():
     joblib.dump(model, "regression.joblib")
     
         
-def main():
-    build_model()
-
-if __name__ == "__main__":
-    main()
+    
+build_model()
