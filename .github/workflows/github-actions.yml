@@ -50,6 +50,12 @@ jobs:
 
       - name: install streamlit
         run: python3 -m pip install streamlit
+        
+      - name: npm i
+        run: npm i
+      
+      - name: npm update
+        run: npm update
 
       - name: run streamlit
         run: streamlit run model_dashboard.py --server.port 8501 --server.address 0.0.0.0 &
