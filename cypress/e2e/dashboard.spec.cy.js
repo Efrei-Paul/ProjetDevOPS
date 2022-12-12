@@ -2,6 +2,7 @@ describe('Dashboard', () => {
   it('Checks if everything exist and work correctly', () => {
     cy.visit('http://127.0.0.1:8501/')
     cy.wait(500)
+
     // Check that the title and the input exist
     
     cy.get('#prediction-de-prix-de-maison')

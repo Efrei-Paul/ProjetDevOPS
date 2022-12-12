@@ -58,7 +58,6 @@ jobs:
           uses: cypress-io/github-action@v4
           with:
             start: streamlit run model_dashboard.py --server.headless=true
-
   docker-push:
     runs-on: ubuntu-latest
     steps:
@@ -76,5 +75,3 @@ jobs:
         with:
           push: true
           tags: efreipaul/projetdevops
-
-  

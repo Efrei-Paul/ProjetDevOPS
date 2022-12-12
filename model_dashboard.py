@@ -13,6 +13,7 @@ def build_model(taille, nb_rooms, garden):
 
     if (type(nb_rooms) != float) and (type(nb_rooms) != int):
         raise Exception("Nb_rooms must be an integer")
+
     if nb_rooms < 0:
         raise Exception("Nb_rooms must be positive")
 
@@ -37,9 +38,9 @@ def build_model(taille, nb_rooms, garden):
 def main():
 	st.title("Prediction de prix de maison")
 	taille = st.number_input("Taille maison")
-	nb_rooms = st.number_input("Nombre de chambre")
+	nb_rooms = int(st.number_input("Nombre de chambre"))
 	garden = st.number_input("Y a un jardin")
-	st.write("le prix de la maison est : {}".format(build_model(taille, nb_rooms, garden)))	
+	st.write(f"le prix de la maison est : {build_model(taille, nb_rooms, garden)}")	
 
 if __name__ == "__main__":
     main()
