@@ -11,8 +11,7 @@ def build_model(taille, nb_rooms, garden):
     if taille < 0:
         raise Exception("Size must be positive")
 
-    print("----_>",type(nb_rooms))
-    if type(nb_rooms) != int:
+    if (type(nb_rooms) != float) and (type(nb_rooms) != int):
         raise Exception("Nb_rooms must be an integer")
 
     if nb_rooms < 0:

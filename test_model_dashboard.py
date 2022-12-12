@@ -39,7 +39,8 @@ def test_positive():
     assert price > 0, f"The price should be greater than 0 expected, got: {price}"
 
 # Test with values from the dataset
-# def test_values():
+
+#def test_values():
 #    assert model_dashboard.build_model(121.8065352034,2,0) == 256477.460465462
 #    assert model_dashboard.build_model(205.9991686803,2,0) == 260972.164974894
 #    assert model_dashboard.build_model(186.5591664373,2,0) == 256534.245748472
@@ -49,3 +50,4 @@ def test_positive():
 #    assert model_dashboard.build_model(165.0130482406,2,1) == 320042.987510679
 #    assert model_dashboard.build_model(193.7314621901,3,1) == 324222.967162171
 #    assert model_dashboard.build_model(94.650536354,2,0) == 222231.558650076
+

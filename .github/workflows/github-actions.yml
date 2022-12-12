@@ -1,5 +1,5 @@
 
-name: Pytest
+name: Tests
 on: [push]
 jobs:
   build-model:
@@ -22,7 +22,7 @@ jobs:
       - name: Run build model
         run: python3 build_model.py
 
-  tests:
+  pytest:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -39,6 +39,25 @@ jobs:
       - name: Run test
         run: pytest .
 
+  cypress-test:
+    runs-on: ubuntu-20.04
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+
+        - name: Setup Python 3.11
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.11'
+            cache: pip
+
+        - name: Install dependencies
+          run: pip install -r requirements.txt
+
+        - name: Cypress run
+          uses: cypress-io/github-action@v4
+          with:
+            start: streamlit run model_dashboard.py --server.headless=true
   docker-push:
     runs-on: ubuntu-latest
     steps:
