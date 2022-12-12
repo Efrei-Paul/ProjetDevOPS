@@ -52,7 +52,7 @@ jobs:
         run: python3 -m pip install streamlit
         
       - name: run cypress
-        run: nohup streamlit run model_dashboard.py &
+        run: nohup streamlit run model_dashboard.py --browser.serverAddress http://localhost &
         
       - name: install cypress
         run: npm install cypress --save-dev
