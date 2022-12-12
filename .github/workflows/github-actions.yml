@@ -1,5 +1,5 @@
 
-name: Pytest
+name: Tests
 on: [push]
 jobs:
   build-model:
@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@v2
       
       - name: install packages
-        run: sudo apt-get install python3
+        run: sudo apt-get install python3 node.js npm
 
       - name: install streamlit
         run: python3 -m pip install streamlit
