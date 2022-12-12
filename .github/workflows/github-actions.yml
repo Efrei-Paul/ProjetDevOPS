@@ -63,7 +63,7 @@ jobs:
           time: 20s
         
       - name: start cypress
-        run : npx cypress run --spec "cypress/e2e/dashboard.spec.cy.js"
+        run : npx cypress run --browser chrome --headed --spec "cypress/e2e/dashboard.spec.cy.js"
           
 
   docker-push:
