@@ -52,7 +52,7 @@ jobs:
         run: python3 -m pip install streamlit
 
       - name: run streamlit
-        run: nohup streamlit run model_dashboard.py --server.port 8501 --server.address 0.0.0.0 &
+        run: streamlit run model_dashboard.py --server.port 8501 --server.address 127.0.0.1 &
         
       - name: Sleep for 10s
         uses: juliangruber/sleep-action@v1
