@@ -54,6 +54,11 @@ jobs:
       - name: run streamlit
         run: nohup streamlit run model_dashboard.py --server.port 8501 --server.address 0.0.0.0 &
         
+      - name: Sleep for 10s
+        uses: juliangruber/sleep-action@v1
+        with:
+          time: 10s
+        
       - name: install cypress
         run : npm install cypress --save-dev
         
