@@ -1,6 +1,6 @@
 describe('Dashboard', () => {
   it('Checks if everything exist and work correctly', () => {
-    cy.visit('http://localhost:8501')
+    cy.visit('http://0.0.0.0:8501')
 
     // Check that the title and the input exist
     cy.get('[id="prediction-de-prix-de-maison"]').should('exist')
